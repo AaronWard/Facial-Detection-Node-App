@@ -1,0 +1,6 @@
+.htaccess FILE: 
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\.facial-detect.herokuapp\.com$ [NC]
+RewriteRule ^(.*)$ https://facial-detect.herokuapp.com/$1 [L,R=301]
+

@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>tracking.js - face with camera</title>
-  <link rel="stylesheet" href="/tracking.js-master/tracking.js-master/examples/assets/demo.css">
+  <link rel="stylesheet" href="tracking.js-master/examples/assets/demo.css">
 
-  <script src="/tracking.js-master/tracking.js-master/build/tracking-min.js"></script>
-  <script src="/tracking.js-master/tracking.js-master/build/data/face-min.js"></script>
-   <script src="../node_modules/dat.gui/build/dat.gui.min.js"></script>
-  <script src="/tracking.js-master/tracking.js-master/examples/assets/stats.min.js"></script>
+  <script src="tracking.js-master/build/tracking-min.js"></script>
+  <script src="tracking.js-master/build/data/face-min.js"></script>
+  <script src="tracking.js-master/build/data/eye-min.js"></script>
+  <script src="tracking.js-master/build/data/mouth-min.js"></script>
+  <script src="../node_modules/dat.gui/build/dat.gui.min.js"></script>
+  <script src="tracking.js-master/examples/assets/stats.min.js"></script>
 
   <style>
   video, canvas {
@@ -36,6 +38,7 @@
       var canvas = document.getElementById('canvas');
       var context = canvas.getContext('2d');
 
+    
       var tracker = new tracking.ObjectTracker('face');
       tracker.setInitialScale(4);
       tracker.setStepSize(2);
