@@ -23,6 +23,7 @@ app.use(bodyParser.json())
  * Home page for interval captures
  */
 app.get('/', function (req, res) {
+	console.log(path.join(__dirname));	
 	res.sendFile(path.join(__dirname+'/index.html'));
 })
 
