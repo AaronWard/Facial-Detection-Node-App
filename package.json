@@ -2,7 +2,7 @@
   "name": "facial-detection-node-app",
   "version": "1.0.0",
   "description": "Using tracking.js for facial detection",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
