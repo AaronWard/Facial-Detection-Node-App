@@ -23,7 +23,7 @@ app.use(bodyParser.json())
  * Home page for interval captures
  */
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname+'/index.html'));
+	res.sendFile(path.join(__dirname+'/examples/face_alignment_video.html'));
 })
 
 var server = app.listen(app.get('port'), function () {
