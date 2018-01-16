@@ -56,6 +56,13 @@
             rect.color = tracker.customColor;
           }
 
+          context.beginPath();
+          context.moveTo(10, 10);
+          context.lineTo(50, 10);
+          context.lineWidth = 4;
+          context.stroke();
+
+
           context.strokeStyle = rect.color;
           context.strokeRect(rect.x, rect.y, rect.width, rect.height);
           context.font = '11px Helvetica';

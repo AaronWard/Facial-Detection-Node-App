@@ -55,6 +55,15 @@
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         event.data.forEach(function(rect) {
+
+          context.beginPath();
+          context.moveTo(10, 10);
+          context.lineTo(50, 10);
+          context.lineWidth = 3;
+          context.stroke();
+
+
+
           context.strokeStyle = '#ffff00';
           context.strokeRect(rect.x, rect.y, rect.width, rect.height);
           context.font = '15px Helvetica';
