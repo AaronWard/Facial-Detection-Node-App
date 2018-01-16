@@ -2,4 +2,3 @@
 test/assets/benchmark.json
 /node_modules
 
-!*/node_modules/dat.gui/*
