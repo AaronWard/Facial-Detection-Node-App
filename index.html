@@ -30,7 +30,16 @@
     <p>A facial tracking Node.JS app using tracking.js and Express</p>
   </div>
 
+
   <div class="demo-frame">
+
+      <div class="buttons">
+          <button onclick="window.location.href='/'">Face Landmarks</button>
+          <button onclick="window.location.href='/face_only'">Face Only</button>
+          <button onclick="window.location.href='/colours'">Colour Detection</button>          
+      </div>
+
+
     <div class="demo-container">
       <video id="video" width="320" height="240" preload autoplay loop muted></video>
       <canvas id="canvas" width="320" height="240"></canvas>

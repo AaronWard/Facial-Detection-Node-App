@@ -24,9 +24,17 @@ app.use(bodyParser.json())
  * Home page for interval captures
  */
 app.get('/', function (req, res) {
-	console.log(path.join(__dirname));	
 	res.sendFile(path.join(__dirname, '/index.html'));
 })
+
+app.get('/face_only', function (req, res) {
+	res.sendFile(path.join(__dirname, '/face_only.html'));
+})
+
+app.get('/colours', function (req, res) {
+	res.sendFile(path.join(__dirname, '/color_detect.html'));
+})
+
 
 var server = app.listen(app.get('port'), function () {
     var host = server.address().address
