@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>tracking.js - face alignment with camera</title>
+  <title>Face detection</title>
   <link rel="stylesheet" href="assets/demo.css">
 
   <script src="../build/tracking.js"></script>
@@ -23,7 +23,7 @@
 </head>
 <body>
   <div class="demo-title">
-    <p><a href="http://trackingjs.com" target="_parent">tracking.js</a> － get user's webcam and align face landmarks to detected faces</p>
+    <p>Young ward</p>
   </div>
 
   <div class="demo-frame">
@@ -41,7 +41,7 @@
 
       var tracker = new tracking.LandmarksTracker();
       tracker.setInitialScale(4);
-      tracker.setStepSize(2);
+      tracker.setStepSize(1);
       tracker.setEdgesDensity(0.1);
 
       tracking.track('#video', tracker, { camera: true });
@@ -53,9 +53,9 @@
         if(!event.data) return;
 
           event.data.faces.forEach(function(rect) {
-            context.strokeStyle = '#a64ceb';
+            context.strokeStyle = '#ff0000';
             context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-            context.font = '11px Helvetica';
+            context.font = '15px Helvetica';
             context.fillStyle = "#fff";
             context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
             context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
