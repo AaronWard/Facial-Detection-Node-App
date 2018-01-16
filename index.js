@@ -24,7 +24,7 @@ app.use(bodyParser.json())
  */
 app.get('/', function (req, res) {
 	console.log(path.join(__dirname));	
-	res.sendFile(path.join(__dirname+'/examples/index.html'));
+	res.sendFile(path.join(__dirname+'/node_modules/face_camera.html'));
 })
 
 var server = app.listen(app.get('port'), function () {
