@@ -279,8 +279,11 @@
   }
 
   if (!navigator.getUserMedia) {
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    navigator.getUserMedia =  navigator.getUserMedia ||
+                              navigator.oGetUserMedia ||
+                              navigator.msGetUserMedia ||
+                              navigator.webkitGetUserMedia ||
+                              navigator.mozGetUserMedia;
   }
 }(window));
 
