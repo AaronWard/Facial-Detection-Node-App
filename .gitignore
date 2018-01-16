@@ -1,2 +1,5 @@
 .DS_Store
 test/assets/benchmark.json
+/node_modules
+
+!dat.gui\build\dat.gui.min.js

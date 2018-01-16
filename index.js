@@ -10,6 +10,7 @@ app.set('port', (process.env.PORT || 5000))
 
 //serve static files in the public directory
 app.use(express.static('public'));
+app.use(express.static('node_modules'));
 
 // Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
