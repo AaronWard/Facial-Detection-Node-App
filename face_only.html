@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>tracking.js - face with camera</title>
   <link rel="stylesheet" href="/examples/assets/demo.css">
-
   <script src="/build/tracking-min.js"></script>
   <script src="/build/data/face-min.js"></script>
   <script src="dat.gui\build\dat.gui.min.js"></script>
@@ -19,27 +18,34 @@
   </style>
 </head>
 <body>
-    <div class="demo-title">
-        <p>A facial tracking Node.JS app using tracking.js and Express</p>
-      </div>
-
-
+  <div class="demo-title">
+      <p>A facial tracking Node.JS app using tracking.js and Express</p>
+  </div>
   <div class="demo-frame">
 
-        <div class="buttons">
-            <button onclick="window.location.href='/'">Face Landmarks</button>
-            <button onclick="window.location.href='/face_only'">Face Only</button>
-            <button onclick="window.location.href='/colours'">Colour Detection</button>          
-        </div>
+    <div class="buttons">
+        <button onclick="window.location.href='/'">Face Landmarks</button>
+        <button onclick="window.location.href='/face_only'">Face Only</button>
+        <button onclick="window.location.href='/colours'">Colour Detection</button>          
+    </div>
 
-        <div class="demo-container">
-                <video id="video" width="600" height="450" preload autoplay loop muted controls></video>
-                <canvas id="canvas" width="600" height="450"></canvas>
-        </div>
+    <div class="demo-container">
+            <video id="video" width="600" height="450" preload autoplay loop muted controls></video>
+            <canvas id="canvas" width="600" height="450"></canvas>
+            <p id="snap-count"></p> 
+    </div>
 </div>  
 
   <script>
     window.onload = function() {
+      
+      /** Initialise timing variables **/
+      var lengthBetweenCapture = 1 * 1000* 60 * 60; // how long till next capture
+      var fequencyOfCaptures = 2 * 1000; //seconds between photos
+      var amountOfPhotos = 100; // amount of photos to capture
+      var counter = 0;
+
+      /** Video and webcam feed **/
       var video = document.getElementById('video');
       var canvas = document.getElementById('canvas');
       var context = canvas.getContext('2d');
@@ -48,22 +54,20 @@
       tracker.setInitialScale(4);
       tracker.setStepSize(2);
       tracker.setEdgesDensity(0.1);
-
       tracking.track('#video', tracker, { camera: true });
-
       tracker.on('track', function(event) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
 
+        context.clearRect(0, 0, canvas.width, canvas.height);
         event.data.forEach(function(rect) {
 
+          /**Make rectangle ticker**/
           context.beginPath();
           context.moveTo(10, 10);
           context.lineTo(50, 10);
           context.lineWidth = 3;
           context.stroke();
 
-
-
+          /** Draw Rectangle and pixel dimensions */
           context.strokeStyle = '#ffff00';
           context.strokeRect(rect.x, rect.y, rect.width, rect.height);
           context.font = '15px Helvetica';
@@ -73,12 +77,32 @@
         });
       });
 
+      /** For changing variables like scale of 
+       *     rectangle etc
+      **/
       var gui = new dat.GUI();
       gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
       gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
       gui.add(tracker, 'stepSize', 1, 5).step(0.1);
+    
+      var capture = function () {    
+        counter = counter + 1;
+        if(counter < amountOfPhotos){ 
+            setTimeout(capture, fequencyOfCaptures); //set time till next image
+            document.getElementById('snap-count').innerHTML = "Snapshot: " + counter.toString();
+        }
+      }
+
+      //Recursive function called 
+      function captures() {
+        // request next batch of captures by only creating one timer event as we need
+        setTimeout(captures,lengthBetweenCapture);
+        counter = 0; // reset counter
+        capture(); // capture timages
+      }
+      // start capturing
+      captures();
     };
   </script>
-
 </body>
 </html>
