@@ -6,3 +6,8 @@ The app includes the following features:
 - detects colours 
 
 ### Can be viewed here: https://facial-detect.herokuapp.com/
+
+
+
+
+![alt text](https://docs.microsoft.com/en-us/azure/cognitive-services/face/images/face.detection.jpg)
